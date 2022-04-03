@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de pessoas</title>
+</head>
+
+<body>
+    <h1>Dados do cadastro</h1>
+
+
+
+    <form action="/validate" name="register">
+
+        <h3>Informações Pessoais</h3>
+        <div>
+            <label for="register_name">Nome:</label>
+            <input type="text" name="name" id="register_name" placeholder="Informe o nome">
+        </div>
+
+        <div>
+            <label for="register_age">Idade:</label>
+            <input type="text" name="age" id="register_age" placeholder="Digite sua idade">
+        </div>
+
+        <div>
+            <label>Gênero</label>
+            <div>
+                <input type="radio" name="gender" id="female" value="F">
+                <label for="female">Feminino</label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id="male" value="M">
+                <label for="male">Masculino</label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id="no_gender" value="NG">
+                <label for="no_gender">Não Binário</label>
+            </div>
+        </div>
+
+        <div>
+            <label for="register_phone">Telefone:</label>
+            <input type="text" name="phone" id="register_phone" placeholder="Informe o telefone">
+        </div>
+
+        <h3>Endereço</h3>
+        <div>
+            <label for="register_adress_street">Rua:</label>
+            <input type="text" name="adress_street" id="register_adress_street" placeholder="Informe sua rua">
+        </div>
+        <div>
+            <label for="register_adress_number">Número/Complemento:</label>
+            <input type="text" name="adress_number" id="register_adress_number" placeholder="Informe seu número">
+        </div>
+        <div>
+            <label for="register_adress_district">Bairro:</label>
+            <input type="text" name="adress_district" id="register_adress_district" placeholder="Informe seu bairro">
+        </div>
+        <div>
+            <label for="register_adress_city">Cidade:</label>
+            <input type="text" name="adress_city" id="register_adress_city" placeholder="Informe sua cidade">
+        </div>
+        <div>
+            <label for="register_adress_state">Estado:</label>
+            <input type="text" name="adress_state" id="register_adress_state" placeholder="Informe seu estado">
+        </div>
+        <div>
+            <label for="register_adress_country">País:</label>
+            <input type="text" name="adress_country" id="register_adress_country" placeholder="Informe seu país">
+        </div>
+        <div>
+            <label for="register_adress_cep">CEP:</label>
+            <input type="text" name="adress_cep" id="register_adress_cep" placeholder="Informe seu CEP">
+        </div>
+
+        <h3>Documentos</h3>
+        <div>
+            <label for="register_documents_cpf">CPF:</label>
+            <input type="text" name="documents_cpf" id="register_documents_cpf">
+        </div>
+        <div>
+            <label for="register_documents_RG">RG:</label>
+            <input type="text" name="documents_RG" id="register_documents_RG">
+        </div>
+
+        <input type="submit" value="Cadastrar">
+
+        <input type="reset" value="Limpar">
+
+
+    </form>
+
+    <a href="pessoas.html">Voltar</a>
+
+</body>
+
+</html>
