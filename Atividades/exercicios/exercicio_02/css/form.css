@@ -1,0 +1,42 @@
+html {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+    background-color: #60bbb3;
+    width: 100%;
+    text-align: center;
+}
+
+h3{
+    font-size: 1.2rem;
+}
+
+.divider {
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid black;
+    padding: 0;
+}
+
+label {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #e6dfdf;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+form > div {
+    padding: 10px;
+}
+
+.button {
+    margin: 20px 10px 20px 10px;
+}

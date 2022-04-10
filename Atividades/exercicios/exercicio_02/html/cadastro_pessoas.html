@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de pessoas</title>
+
+    <link rel="stylesheet" href="../css/form.css">
 </head>
 
 <body>
@@ -16,6 +18,7 @@
     <form action="/validate" name="register">
 
         <h3>Informações Pessoais</h3>
+
         <div>
             <label for="register_name">Nome:</label>
             <input type="text" name="name" id="register_name" placeholder="Informe o nome">
@@ -46,7 +49,7 @@
             <label for="register_phone">Telefone:</label>
             <input type="text" name="phone" id="register_phone" placeholder="Informe o telefone">
         </div>
-
+        <div class="divider"></div>
         <h3>Endereço</h3>
         <div>
             <label for="register_adress_street">Rua:</label>
@@ -76,7 +79,7 @@
             <label for="register_adress_cep">CEP:</label>
             <input type="text" name="adress_cep" id="register_adress_cep" placeholder="Informe seu CEP">
         </div>
-
+        <div class="divider"></div>
         <h3>Documentos</h3>
         <div>
             <label for="register_documents_cpf">CPF:</label>
@@ -87,9 +90,9 @@
             <input type="text" name="documents_RG" id="register_documents_RG">
         </div>
 
-        <input type="submit" value="Cadastrar">
+        <input type="submit" class="button" value="Cadastrar">
 
-        <input type="reset" value="Limpar">
+        <input type="reset" class="button" value="Limpar">
 
 
     </form>
