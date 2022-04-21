@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script>
+        function Pessoa(nome, idade, sobrenome) {
+            this.nome = nome;
+            this.idade = idade;
+            this.sobrenome = sobrenome;
+        }
+
+        function carragarDados() {
+            const nome = document.getElementById("nome_input").value;
+            const sobrenome = document.getElementById("sobrenome_input").value;
+            const idade = document.getElementById("idade_input").value;
+
+            const pessoa = new Pessoa(nome, idade, sobrenome);
+
+            console.log(pessoa);
+
+            document.getElementById("nome_sobrenome_table").innerHTML = pessoa.nome + ' ' + pessoa.sobrenome;
+            document.getElementById("idade_table").innerHTML = pessoa.idade;
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>Informe seus dados:</h2>
+
+    <form action="#" method="post" name="dados">
+        <div class="form-group p-2">
+            <label for="nome" class="p-2">Nome:</label>
+            <input type="text" class="form-control" name="nome" id="nome_input">
+        </div>
+        <div class="form-group p-2">
+            <label for="sobrenome" class="p-2">Sobrenome:</label>
+            <input type="text" class="form-control" id="sobrenome_input">
+        </div>
+        <div class="form-group p-2">
+            <label for="idade" class="p-2">Idade:</label>
+            <input type="number" class="form-control" name="idade" id="idade_input">
+        </div>
+    </form>
+
+    <input type="button" value="Enviar" class="btn btn-secondary" onclick="carragarDados()">
+
+    <h2>Dados informados:</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+
+                <tr class="table-dark">
+                    <th>Nome</th>
+                    <th>Idade</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <div id="nome_sobrenome_table"></div>
+                    </td>
+                    <td id="idade_table">
+                        <div id="idade_table"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
