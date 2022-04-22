@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Interval</title>
+
+    <link rel="stylesheet" href="../css/set-interval.css">
+
+    <script>
+
+        function progressBar() {
+            var bar = document.getElementById("myBar");
+            var width = 0;
+            var id = setInterval(frame, 10);
+
+            function frame() {
+                if (width == 100) {
+                    clearInterval(id);
+                } else {
+                    width++;
+                    bar.style.width = width + '%';
+                }
+            }
+        }
+
+
+        var interval = setInterval(timerClock, 1000);
+        function timerClock() {
+            var date = new Date();
+            var time = date.toLocaleTimeString();
+
+            document.getElementById("clock").innerHTML = time;
+        }
+
+        'use strict';
+        let hour = 0;
+        let minute = 0;
+        let second = 0;
+        let millisecond = 0;
+        let stopwatch;
+        // document.form_main.startClock.onclick = start();
+        // document.form_main.stop.onclick = () => stop();
+        // document.form_main.reset.onclick = () => reset();
+
+        function start() {
+            stopwatch = setInterval(() => { timer(); }, 10);
+        }
+
+        function stop() {
+            clearInterval(stopwatch);
+        }
+
+        function reset() {
+            clearInterval(stopwatch);
+            hour = 0;
+            minute = 0;
+            second = 0;
+            millisecond = 0;
+            document.getElementById('hour').innerText = '00';
+            document.getElementById('minute').innerText = '00';
+            document.getElementById('second').innerText = '00';
+            document.getElementById('millisecond').innerText = '000';
+
+        }
+
+        function timer() {
+            if ((millisecond += 10) == 1000) {
+                millisecond = 0;
+                second++;
+            }
+            if (second == 60) {
+                second = 0;
+                minute++;
+
+            }
+            if (minute == 60) {
+                minute = 0;
+                hour++;
+            }
+
+            document.getElementById('hour').innerText = returnData(hour);
+            document.getElementById('minute').innerText = returnData(minute);
+            document.getElementById('second').innerText = returnData(second);
+            document.getElementById('millisecond').innerText = returnData(millisecond);
+
+        }
+
+        function returnData(input) {
+            return input > 10 ? input : `0${input}`;
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <br><br>
+
+    <div id="myProgress">
+        <div id="myBar"></div>
+    </div>
+
+    <br>
+    <button onclick="progressBar()">Click Here</button>
+
+    <br><br><br>
+    <h3>Current Time</h3>
+    <p id="clock"></p>
+
+    <br><br><br>
+    <h3>StopWatch</h3>
+    <form name="form_main">
+        <div>
+            <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>:<span
+                id="millisecond">000</span>
+        </div>
+
+        <br>
+
+    </form>
+    <input type="button" name="start" value="Start" onclick="start()">
+    <input type="button" name="stop" value="Stop" onclick="stop()">
+    <input type="button" name="reset" value="Reset" onclick="reset()">
+
+</body>
+
+</html>
