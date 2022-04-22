@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Regiões, Estados e Cidades - API IBGE</title>
+
+    <link rel="stylesheet" href="../css/api.css">
+</head>
+
+<body onload="carregarRegiao()">
+
+    <form action="#">
+
+        <!-- <input type="button" value="Carregar informações" onclick="carregarRegiao()"> -->
+
+        <h2>Informe sua localização</h2>
+
+        <span id="fields">Região:</span>
+
+        <select name="regioes" id="regioes" onchange="carregarEstados()">
+            <option value="">Selecione:</option>
+        </select>
+
+        <br><br>
+        <span id="fields">Estado:</span>
+
+        <select name="estados" id="estados" onchange="carregarCidades()">
+            <option value="">Selecione:</option>
+        </select>
+
+        <br><br>
+        <span id="fields">Cidade:</span>
+
+        <select name="cidades" id="cidades">
+            <option value="">Selecione:</option>
+        </select>
+
+    </form>
+
+    <script src="../js/api.js"></script>
+
+</body>
+
+</html>
