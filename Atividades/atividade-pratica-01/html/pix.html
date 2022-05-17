@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="bg-gradient-to-tl from-cyan-800/70 to-slate-200 max-h">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de PIX</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body onload="carregarBancos()" class="py-8">
+
+    <div class="max-w-6xl mx-auto bg-slate-100 py-8 px-12 rounded-lg shadow-md">
+
+        <!-- TITLE -->
+        <div class="flex space-x-2 justify-center mb-4">
+            <p class="focus:outline-none text-2xl font-extrabold leading-6 text-cyan-900">PIX</p>
+        </div>
+
+        <form method="post" name="dados">
+
+            <div class="px-6 pb-6">
+                <dh-component>
+                    <div class="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 
+                        lg:grid-cols-3 xl:grid-cols-3 pt-6 gap-8">
+                        <div class="rounded ">
+                            <!-- TIPO DE CHAVE -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="tipo_chave">Tipo de chave:</label>
+                                <select name="tipo_chave" id="tipo_chave" class="px-2 appearance-auto block 
+                                w-full border border-cyan-700/50 
+                                hover:border-cyan-700 py-2 pr-8 rounded-lg shadow leading-4 
+                                focus:outline-none focus:shadow-outline   
+                                transition ease-in-out bg-slate-200 text-cyan-700 font-semibold mt-2.5">
+                                    <option value="">Selecione:</option>
+                                    <option value="CPF">CPF</option>
+                                    <option value="CNPJ">CNPJ</option>
+                                    <option value="Email">E-mail</option>
+                                    <option value="Celular">Celular</option>
+                                    <option value="Chave Aleatoria">Chave aleatória</option>
+                                </select>
+                            </div>
+
+                            <!-- VALOR DA CHAVE -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="valor_chave">Chave:</label>
+                                <input
+                                    class="text-md font-medium leading-4 text-cyan-700 bg-slate-200 
+                                rounded-lg border border-cyan-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-cyan-700"
+                                    type="text" name="valor_chave" id="valor_chave">
+                            </div>
+                        </div>
+                        <div class="rounded">
+                            <!-- BANCO -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="bank">Banco:</label>
+                                <select
+                                    class="text-md font-medium leading-4 text-cyan-700 bg-slate-200 
+                                rounded-lg border border-cyan-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-cyan-700"
+                                    name="bank" id="bank">
+                                    <option value="">Selecione:</option>
+                                </select>
+                            </div>
+
+                            <!-- TIPO DE OPERAÇÃO -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="operacao">Operação:</label>
+                                <select
+                                    class="text-md font-medium leading-4 text-cyan-700 bg-slate-200 
+                                rounded-lg border border-cyan-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-cyan-700"
+                                    name="operacao" id="operacao">
+                                    <option value="">Selecione:</option>
+                                    <option value="Envio">Envio</option>
+                                    <option value="Recebimento">Recebimento</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="rounded">
+                            <!-- VALOR -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="valor">Valor:</label>
+                                <input
+                                    class="text-md font-medium leading-4 text-cyan-700 bg-slate-200 
+                                rounded-lg border border-cyan-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-cyan-700"
+                                    type="text" name="valor" id="valor">
+                            </div>
+
+                            <!-- DATA -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="data">Data:</label>
+                                <input
+                                    class="text-md font-medium leading-4 text-cyan-700 bg-slate-200 
+                                rounded-lg border border-cyan-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-cyan-700"
+                                    type="date" name="data" id="data">
+                            </div>
+                        </div>
+                    </div>
+                </dh-component>
+            </div>
+
+            <!-- BUTTON -->
+            <div class="flex space-x-2 justify-center">
+                <input class="inline-block w-1/4 px-6 py-2.5 bg-cyan-700 text-white 
+                font-medium text-md leading-tight rounded shadow-md 
+                hover:bg-cyan-800 hover:shadow-lg focus:bg-cyan-900 focus:shadow-lg 
+                focus:outline-none focus:ring-0 active:bg-cyan-800 active:shadow-lg 
+                transition duration-150 ease-in-out" type="button" value="Enviar" onclick="pix.salvar()">
+            </div>
+
+        </form>
+
+        <hr class="w-full bg-cyan-400 border-dashed border-1 border-cyan-900/150 my-12">
+
+        <div id="resultado" class="content">
+
+            <!-- TITLE -->
+            <div class="flex space-x-2 justify-center mb-4">
+                <p class="focus:outline-none text-2xl font-extrabold leading-6 text-cyan-900">EXTRATO</p>
+            </div>
+
+            <div class="my-6">
+                <span class="font-sans font-bold text-cyan-800 text-lg content-center">Saldo: </span>
+                <span class="font-sans font-semibold text-black-800 text-lg content-center" id="total_value">R$
+                    0,00</span>
+            </div>
+
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-md pl-2 text-center text-white-500 dark:text-gray-800">
+                    <thead class="text-xs text-white-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                ID
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tipo de chave
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Chave
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Banco
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Operação
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Valor
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Data
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/pix.js"></script>
+
+</body>
+
+</html>

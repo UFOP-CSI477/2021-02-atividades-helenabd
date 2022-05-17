@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gradient-to-tl from-cyan-800/70 to-slate-200 max-h">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Moedas</title>
+
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body onload="carregarMoedas()" class="py-8">
+
+    <div class="max-w-6xl mx-auto bg-slate-100 py-8 px-12 rounded-lg shadow-md">
+
+        <!-- TITLE -->
+        <div class="flex space-x-2 justify-center mb-4">
+            <p class="focus:outline-none text-2xl font-extrabold leading-6 text-cyan-900">Conversor de Moedas</p>
+        </div>
+
+        <form method="post" name="dados">
+            <div class="px-6 pb-6">
+                <dh-component>
+                    <div class="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 
+                        lg:grid-cols-2 xl:grid-cols-2 pt-6 gap-8">
+                        <div class="rounded">
+                            <!-- DATA -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="data_cotacao">Data da cotação:</label>
+                                <input
+                                    class="text-md font-medium leading-4 text-cyan-700 bg-slate-200 
+                                rounded-lg border border-cyan-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-cyan-700"
+                                    type="date" name="data_cotacao" id="data_cotacao">
+                            </div>
+
+                            <!-- VALOR -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="valor">Valor:</label>
+                                <input
+                                    class="text-md font-medium leading-4 text-cyan-700 bg-slate-200 
+                                rounded-lg border border-cyan-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-cyan-700"
+                                    type="text" name="valor" id="valor">
+                            </div>
+                        </div>
+
+                        <div class="rounded">
+                            <!-- MOEDA INICIAL -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="moeda_inicial">Converter de:</label>
+                                <select class="px-2 appearance-auto block 
+                                w-full border border-cyan-700/50 
+                                hover:border-cyan-700 py-2 pr-8 rounded-lg shadow leading-4 
+                                focus:outline-none focus:shadow-outline   
+                                transition ease-in-out bg-slate-200 text-cyan-700 font-semibold mt-2.5"
+                                    name="moeda_inicial" id="moeda_inicial">
+                                    <option value="">Selecione:</option>
+                                    <option value="BRL">Real</option>
+                                </select>
+                            </div>
+
+                            <!-- MOEDA FINAL -->
+                            <div class="mt-2 flex flex-col">
+                                <label class="font-sans font-bold text-cyan-800 text-lg content-center"
+                                    for="moeda_final">Para:</label>
+                                <select class="px-2 appearance-auto block 
+                                w-full border border-cyan-700/50 
+                                hover:border-cyan-700 py-2 pr-8 rounded-lg shadow leading-4 
+                                focus:outline-none focus:shadow-outline   
+                                transition ease-in-out bg-slate-200 text-cyan-700 font-semibold mt-2.5"
+                                    name="moeda_final" id="moeda_final">
+                                    <option value="">Selecione:</option>
+                                    <option value="BRL">Real</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </dh-component>
+            </div>
+            <!-- BUTTON -->
+            <div class="flex space-x-2 justify-center">
+                <input class="inline-block w-1/5 px-6 py-2.5 bg-cyan-700 text-white 
+                font-medium text-md leading-tight rounded shadow-md 
+                hover:bg-cyan-800 hover:shadow-lg focus:bg-cyan-900 focus:shadow-lg 
+                focus:outline-none focus:ring-0 active:bg-cyan-800 active:shadow-lg 
+                transition duration-150 ease-in-out" type="button" value="Enviar" onclick="converterMoeda()">
+            </div>
+        </form>
+
+        <hr class="w-full bg-cyan-400 border-dashed border-1 border-cyan-900/150 my-12">
+
+        <div id="resultado" class="content">
+
+            <!-- TITLE -->
+            <div class="flex space-x-2 justify-center mb-4">
+                <p class="focus:outline-none text-2xl font-extrabold leading-6 text-cyan-900">Resultado</p>
+            </div>
+
+            <div>
+                <div class="grid gap-6 mb-6 lg:grid-cols-2">
+                    <!-- DADOS A SER CONVERTIDO -->
+                    <div class="mt-2 flex flex-col conte">
+                        <label class="font-sans font-bold text-cyan-800 text-lg content-center">Conversão de:</label>
+                        <span class="font-sans font-semibold pt-2" id="conversao"></span>
+                    </div>
+                    <div class="mt-2 flex flex-col">
+                        <label class="font-sans font-bold text-cyan-800 text-lg content-center">Valor a
+                            converter:</label>
+                        <span class="font-sans font-semibold pt-2" id="valor_inicial"></span>
+                    </div>
+
+                    <!-- RESULTADO DA CONVERSAO -->
+                    <div class="mt-2 flex flex-col">
+                        <label class="font-sans font-bold text-cyan-800 text-lg content-center">Para:</label>
+                        <span class="font-sans font-semibold pt-2" id="conversao_final"></span>
+                    </div>
+
+                    <div class="mt-2 flex flex-col">
+                        <label class="font-sans font-bold text-cyan-800 text-lg content-center">Resultado da
+                            conversão:</label>
+                        <span class="font-sans font-semibold pt-2" id="valor_final"></span>
+                    </div>
+
+                    <!-- COTAÇÃO UTILIZADA -->
+                    <div lass="mt-2 flex flex-col">
+                        <label class="font-sans font-bold text-cyan-800 text-lg content-center">Data da cotação
+                            utilizada:</label>
+                        <span class="font-sans font-semibold pt-2" id="data_cotacao_final"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/moedas.js"></script>
+
+</body>
+
+</html>
