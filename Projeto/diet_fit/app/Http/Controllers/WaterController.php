@@ -36,9 +36,10 @@ class WaterController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         Water::create($request->all());
         session()->flash('message', 'Água adicionada com sucesso!');
-        return redirect()->route('water.index');
+        return redirect()->route('home');
     }
 
     /**
