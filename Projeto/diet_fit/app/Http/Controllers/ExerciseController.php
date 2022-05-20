@@ -36,9 +36,10 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         Exercise::create($request->all());
         session()->flash('message', 'Exercício adicionado com sucesso!');
-        return redirect()->route('exercise.index');
+        return redirect()->route('home');
     }
 
     /**
