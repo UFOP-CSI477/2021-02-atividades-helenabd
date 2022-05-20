@@ -18,8 +18,12 @@ use App\Http\Controllers\WaterController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('principal');
+})->name('principal');
+
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
 
 Route::resource('/food', FoodController::class);
 
