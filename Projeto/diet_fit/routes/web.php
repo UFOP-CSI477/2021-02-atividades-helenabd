@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FoodController;
+use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\WaterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/food', FoodController::class);
+
+Route::resource('/exercise', ExerciseController::class);
+
+Route::resource('/water', WaterController::class);
