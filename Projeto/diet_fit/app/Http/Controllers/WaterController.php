@@ -15,7 +15,7 @@ class WaterController extends Controller
     public function index()
     {
         $water = Water::all();
-        return view('water.index', ['waters' => $water]);
+        return view('water.index', ['water' => $water]);
     }
 
     /**
