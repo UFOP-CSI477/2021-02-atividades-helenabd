@@ -36,7 +36,6 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         Food::create($request->all());
         session()->flash('message', 'Alimentação adicionada com sucesso!');
         return redirect()->route('home');
