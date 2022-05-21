@@ -35,8 +35,12 @@
                         {{$exercise->calories}} kcal
                     </td>
                     <td class="px-2 py-4 font-semibold flex justify-evenly">
-                        <a class="p-2 text-white rounded bg-orange-300" href="">Editar</a>
-                        <a class="p-2 text-white rounded bg-red-400" href="">Deletar</a>
+                        <a class="p-2 text-white rounded bg-orange-300" href=" {{ route('exercise.edit', $exercise->id) }}">Editar</a>
+                        <form name="frmDelete" action="{{ route('exercise.destroy', $exercise->id) }}" method="post" onsubmit="return confirm('Confirma a exclusão do estado?');">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Deletar" class="p-2 text-white rounded bg-red-400">
+                        </form>
                     </td>
                 </tr>
             </tbody>
