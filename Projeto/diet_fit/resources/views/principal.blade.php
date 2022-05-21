@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+    <!-- TODO: descobrir como colocar bold na tela que está no navbar -->
     <div class="container-fluid">
         <!-- NAV_BAR -->
         <div class="bg-teal-700/70 py-8">
@@ -24,13 +24,13 @@
                 </div>
                 <ul class="hidden w-12/12 md:flex items-center justify-center space-x-12">
                     <li>
-                        <a href="javascript:void(0)" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline font-bold">HOME</a>
+                        <a href="{{route('home')}}" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline font-bold">HOME</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">PROGRESSO</a>
+                        <a href="{{route('progress')}}" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">PROGRESSO</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">PERFIL</a>
+                        <a href="{{route('profile')}}" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">PERFIL</a>
                     </li>
                 </ul>
             </div>
