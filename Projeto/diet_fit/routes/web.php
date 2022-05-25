@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\WaterController;
 
 use App\Models\Food;
@@ -42,32 +43,15 @@ Route::get('/home', function () {
 })->name('home');
 
 Route::get('/progress', function () {
-    // Food
-    $foods = Food::all();
-    $totalFood = 0;
-    foreach ($foods as $food) {
-        $totalFood = $totalFood + $food->calories;
-    }
-    // Exercise
-    $exercises = Exercise::all();
-    $totalExercise = 0;
-    foreach ($exercises as $exercise) {
-        $totalExercise = $totalExercise + $exercise->calories;
-    }
-    // Water
-    $waters = Water::all();
-    $totalWater = 0;
-    foreach ($waters as $water) {
-        $totalWater = $totalWater + $water->amount;
-    }
-    // TODO: descobrir melhor forma de pegar esse valores utilizando Controller
-    // TODO: descobrir como buscar os valores a partir da data
-    return view('progress', ['foods' => $foods, 'totalFood' => $totalFood, 'exercises' => $exercises, 'totalExercise' => $totalExercise, 'waters' => $waters, 'totalWater' => $totalWater]);
+    return view('progress');
 })->name('progress');
+
+Route::get('/progress.show', [ProgressController::class, 'show'])->name('progress.show');
 
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+
 
 Route::resource('/food', FoodController::class);
 
