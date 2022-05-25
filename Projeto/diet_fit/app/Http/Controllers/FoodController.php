@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
+use Illuminate\View\DynamicComponent;
 
 class FoodController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $foods = Food::all();
-        return view('food.index', ['foods' => $foods]);
+        // $x = $date;
+        dd($request->all());
+        // $foods = Food::whereDate('created_at', $date)->get();
+        // return view('food.index', ['foods' => $foods]);
     }
 
     /**

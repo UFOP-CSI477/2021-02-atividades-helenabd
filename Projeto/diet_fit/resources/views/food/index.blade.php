@@ -53,7 +53,7 @@
             font-medium text-md leading-tight rounded shadow-md 
             hover:bg-teal-800 hover:shadow-lg focus:bg-teal-900 focus:shadow-lg 
             focus:outline-none focus:ring-0 active:bg-teal-800 active:shadow-lg 
-            transition duration-150 ease-in-out" href="{{ route('progress') }}">Voltar</a>
+            transition duration-150 ease-in-out" href="{{ route('progress.show') }}">Voltar</a>
     </div>
 </div>
 
