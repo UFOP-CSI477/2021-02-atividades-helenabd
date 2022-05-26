@@ -7,10 +7,6 @@ use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\WaterController;
 
-use App\Models\Food;
-use App\Models\Exercise;
-use App\Models\Water;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
