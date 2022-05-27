@@ -30,7 +30,7 @@
                         <a href="{{route('progress')}}" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">PROGRESSO</a>
                     </li>
                     <li>
-                        <a href="{{route('profile')}}" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">PERFIL</a>
+                        <a href="{{route('user.index')}}" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">PERFIL</a>
                     </li>
                 </ul>
             </div>

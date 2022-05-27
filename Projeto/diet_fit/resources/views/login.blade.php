@@ -22,7 +22,7 @@
             <!-- EMAIL -->
             <div class="mt-6  w-full">
                 <div class="relative flex items-center justify-center">
-                    <input aria-labelledby="email" type="email" placeholder="Email" class="text-md font-medium 
+                    <input name="email" id="email" aria-labelledby="email" type="email" placeholder="Email" class="text-md font-medium 
                         leading-4 text-teal-700 bg-slate-200 
                     rounded-lg border border-teal-700/50 focus:outline-none px-4 py-3 mt-4 
                     hover:border-teal-700" id="email">
@@ -31,7 +31,7 @@
             <!-- SENHA -->
             <div class="mt-6  w-full">
                 <div class="relative flex items-center justify-center">
-                    <input id="pass" type="password" placeholder="Senha" class="text-md font-medium leading-4 
+                    <input id="pass" name="pass" type="password" placeholder="Senha" class="text-md font-medium leading-4 
                         text-teal-700 bg-slate-200 rounded-lg border border-teal-700/50 focus:outline-none 
                         px-4 py-3 mt-4 hover:border-teal-700" />
                 </div>
@@ -48,7 +48,7 @@
             <div class="flex space-x-2 justify-center">
                 <p tabindex="0" class="focus:outline-none text-md mt-4 font-medium leading-none text-gray-700">Ainda
                     não
-                    é cadastrado? <a href="javascript:void(0)" class="hover:text-teal-900 focus:text-teal-900 
+                    é cadastrado? <a href="{{ route('register') }}" class="hover:text-teal-900 focus:text-teal-900 
                         focus:outline-none text-md font-bold 
                         leading-none text-teal-800 cursor-pointer">
                         Cadastre-se</a></p>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WaterController;
 
 /*
@@ -30,11 +31,11 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-Route::get('/', function () {
+Route::get('/principal', function () {
     return view('principal');
 })->name('principal');
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 })->name('home');
 
@@ -54,3 +55,5 @@ Route::resource('/food', FoodController::class);
 Route::resource('/exercise', ExerciseController::class);
 
 Route::resource('/water', WaterController::class);
+
+Route::resource('/user', UserController::class);
