@@ -32,6 +32,6 @@ class ProgressController extends Controller
             $totalWater = $totalWater + $water->amount;
         }
 
-        return view('progress.show', ['date' => $request->date, 'dateFormat' => $dateFormat, 'foods' => $foods, 'totalFood' => $totalFood, 'exercises' => $exercises, 'totalExercise' => $totalExercise, 'waters' => $waters, 'totalWater' => $totalWater]);
+        return view('progress.show', ['dateFormat' => $dateFormat, 'foods' => $foods, 'totalFood' => $totalFood, 'exercises' => $exercises, 'totalExercise' => $totalExercise, 'waters' => $waters, 'totalWater' => $totalWater]);
     }
 }
