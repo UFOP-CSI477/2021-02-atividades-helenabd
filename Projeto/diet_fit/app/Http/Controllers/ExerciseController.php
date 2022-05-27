@@ -14,8 +14,7 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        $exercises = Exercise::all();
-        return view('exercise.index', ['exercises' => $exercises]);
+        // 
     }
 
     /**
@@ -25,7 +24,7 @@ class ExerciseController extends Controller
      */
     public function create()
     {
-        return view('exercise.create');
+        // 
     }
 
     /**
@@ -50,7 +49,7 @@ class ExerciseController extends Controller
      */
     public function show(Exercise $exercise)
     {
-        return view('exercise.show', ['exercise' => $exercise]);
+        //    
     }
 
     /**
@@ -78,7 +77,7 @@ class ExerciseController extends Controller
 
         session()->flash('message', 'Exercício atualizado com sucesso!');
 
-        return redirect()->route('exercise.index');
+        return redirect()->route('progress');
     }
 
     /**

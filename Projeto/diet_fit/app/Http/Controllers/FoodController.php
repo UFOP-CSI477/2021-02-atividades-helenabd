@@ -15,12 +15,9 @@ class FoodController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        // $x = $date;
-        dd($request->all());
-        // $foods = Food::whereDate('created_at', $date)->get();
-        // return view('food.index', ['foods' => $foods]);
+        // 
     }
 
     /**
@@ -30,7 +27,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        return view('food.create');
+        // 
     }
 
     /**
@@ -54,7 +51,7 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        return view('food.show', ['food' => $food]);
+        // 
     }
 
     /**
@@ -82,7 +79,7 @@ class FoodController extends Controller
 
         session()->flash('message', 'Alimentação atualizada com sucesso!');
 
-        return redirect()->route('food.index');
+        return redirect()->route('progress');
     }
 
     /**

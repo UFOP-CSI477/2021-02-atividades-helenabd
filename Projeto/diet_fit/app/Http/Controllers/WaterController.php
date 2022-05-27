@@ -14,8 +14,7 @@ class WaterController extends Controller
      */
     public function index()
     {
-        $water = Water::all();
-        return view('water.index', ['water' => $water]);
+        // 
     }
 
     /**
@@ -25,7 +24,7 @@ class WaterController extends Controller
      */
     public function create()
     {
-        return view('water.create');
+        // 
     }
 
     /**
@@ -50,7 +49,7 @@ class WaterController extends Controller
      */
     public function show(Water $water)
     {
-        return view('water.show', ['water' => $water]);
+        // 
     }
 
     /**
@@ -78,7 +77,7 @@ class WaterController extends Controller
 
         session()->flash('message', 'Água atualizada com sucesso!');
 
-        return redirect()->route('water.index');
+        return redirect()->route('progress');
     }
 
     /**
