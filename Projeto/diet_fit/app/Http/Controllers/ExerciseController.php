@@ -35,10 +35,13 @@ class ExerciseController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        Exercise::create($request->all());
-        session()->flash('message', 'Exercício adicionado com sucesso!');
-        return redirect()->route('home');
+        if (Exercise::create($request->all())) {
+            session()->flash('message', 'Exercício adicionado com sucesso!');
+            return redirect()->route('home');
+        } else {
+            session()->flash('error-message', 'Erro ao adicionar exercício!');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -73,11 +76,13 @@ class ExerciseController extends Controller
     public function update(Request $request, Exercise $exercise)
     {
         $exercise->fill($request->all());
-        $exercise->save();
-
-        session()->flash('message', 'Exercício atualizado com sucesso!');
-
-        return redirect()->route('progress');
+        if ($exercise->save()) {
+            session()->flash('message', 'Exercício atualizado com sucesso!');
+            return redirect()->route('progress');
+        } else {
+            session()->flash('error-message', 'Erro ao atualizar exercício!');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -88,8 +93,12 @@ class ExerciseController extends Controller
      */
     public function destroy(Exercise $exercise)
     {
-        $exercise->delete();
-        session()->flash('message', 'Exercício excluído com sucesso!');
-        return redirect()->route('progress');
+        if ($exercise->delete()) {
+            session()->flash('message', 'Exercício removido com sucesso!');
+            return redirect()->route('progress');
+        } else {
+            session()->flash('error-message', 'Erro ao remover exercício!');
+            return back()->withInput();
+        }
     }
 }

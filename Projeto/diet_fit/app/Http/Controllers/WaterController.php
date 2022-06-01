@@ -35,10 +35,13 @@ class WaterController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        Water::create($request->all());
-        session()->flash('message', 'Água adicionada com sucesso!');
-        return redirect()->route('home');
+        if (Water::create($request->all())) {
+            session()->flash('message', 'Água adicionada com sucesso!');
+            return redirect()->route('home');
+        } else {
+            session()->flash('error-message', 'Erro ao adicionar água!');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -73,11 +76,13 @@ class WaterController extends Controller
     public function update(Request $request, Water $water)
     {
         $water->fill($request->all());
-        $water->save();
-
-        session()->flash('message', 'Água atualizada com sucesso!');
-
-        return redirect()->route('progress');
+        if ($water->save()) {
+            session()->flash('message', 'Água atualizada com sucesso!');
+            return redirect()->route('progress');
+        } else {
+            session()->flash('error-message', 'Erro ao atualizar água!');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -88,8 +93,12 @@ class WaterController extends Controller
      */
     public function destroy(Water $water)
     {
-        $water->delete();
-        session()->flash('message', 'Água removida com sucesso!');
-        return redirect()->route('progress');
+        if ($water->delete()) {
+            session()->flash('message', 'Água removida com sucesso!');
+            return redirect()->route('progress');
+        } else {
+            session()->flash('error-message', 'Erro ao remover água!');
+            return back()->withInput();
+        }
     }
 }

@@ -38,9 +38,13 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        Food::create($request->all());
-        session()->flash('message', 'Alimentação adicionada com sucesso!');
-        return redirect()->route('home');
+        if (Food::create($request->all())) {
+            session()->flash('message', 'Alimento adicionado com sucesso!');
+            return redirect()->route('home');
+        } else {
+            session()->flash('error-message', 'Erro ao adicionar alimento!');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -75,11 +79,13 @@ class FoodController extends Controller
     public function update(Request $request, Food $food)
     {
         $food->fill($request->all());
-        $food->save();
-
-        session()->flash('message', 'Alimentação atualizada com sucesso!');
-
-        return redirect()->route('progress');
+        if ($food->save()) {
+            session()->flash('message', 'Alimentação atualizada com sucesso!');
+            return redirect()->route('progress');
+        } else {
+            session()->flash('error-message', 'Erro ao atualizar alimentação!');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -90,8 +96,12 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        $food->delete();
-        session()->flash('message', 'Alimentação excluída com sucesso!');
-        return redirect()->route('progress');
+        if ($food->delete()) {
+            session()->flash('message', 'Alimentação removida com sucesso!');
+            return redirect()->route('progress');
+        } else {
+            session()->flash('error-message', 'Alimentação não pode ser removida!');
+            return back()->withInput();
+        }
     }
 }
