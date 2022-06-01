@@ -37,7 +37,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         User::create($request->all());
         session()->flash('message', 'Usuário criado com sucesso!');
         return redirect()->route('login');
@@ -74,7 +73,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->fill($request->all());
+        $user->save();
+
+        session()->flash('message', 'Usuário atualizado com sucesso!');
+
+        return redirect()->route('user.index');
     }
 
     /**

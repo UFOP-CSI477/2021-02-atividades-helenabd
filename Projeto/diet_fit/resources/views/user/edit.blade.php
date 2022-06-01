@@ -12,30 +12,32 @@
     <div class="max-w-4xl mx-auto bg-white py-8 px-12 rounded-lg shadow-2xl">
         <!-- TITLE -->
         <div class="flex space-x-2 justify-center mb-4">
-            <p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-teal-800">Cadastro</p>
+            <p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-teal-800">Usuário</p>
         </div>
-        <form action="{{ route('user.store') }}" method="post">
+        <form action="{{ route('user.update', $user->id) }}" method="post">
+
             @csrf
+            @method('PUT')
 
             <!-- NOME -->
             <div class="grid gap-6 mb-6 lg:grid-cols-2">
                 <div class="mt-2 flex flex-col">
                     <label for="name" class="font-sans font-bold text-teal-800 text-lg content-center">Nome:</label>
                     <input type="text" id="name" name="name" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->name }}" required>
                 </div>
                 <!-- DATA_NASCIMENTO -->
                 <div class="mt-2 flex flex-col">
                     <label for="birthday" class="font-sans font-bold text-teal-800 text-lg content-center">Data de
                         Nascimento:</label>
                     <input type="text" id="birthday" name="birthday" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->birthday }}" required>
                 </div>
                 <!-- TELEFONE -->
                 <div class="mt-2 flex flex-col">
                     <label for="phone_number" class="font-sans font-bold text-teal-800 text-lg content-center">Telefone:</label>
                     <input type="text" id="phone_number" name="phone_number" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->phone_number }}" required>
                 </div>
                 <!-- GÊNERO -->
                 <div class="mt-2 flex flex-col">
@@ -44,7 +46,7 @@
                         hover:border-teal-700 py-2 pr-8 rounded-lg shadow leading-4 
                         focus:outline-none focus:shadow-outline   
                         transition ease-in-out bg-slate-200 text-teal-700 font-semibold mt-2.5">
-                        <option disabled selected class="text-teal-700 font-semibold">Opções</option>
+                        <option selected class="text-teal-700 font-semibold">{{ $user->sex }}</option>
                         <option id="no_gender" class="text-teal-700 font-semibold">Sem gênero</option>
                         <option id="female" class="text-teal-700 font-semibold">Feminino</option>
                         <option id="male" class="text-teal-700 font-semibold">Masculino</option>
@@ -54,25 +56,25 @@
                 <div class="mt-2 flex flex-col">
                     <label for="height" class="font-sans font-bold text-teal-800 text-lg content-center">Altura:</label>
                     <input type="text" id="height" name="height" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->height }}" required>
                 </div>
                 <!-- PESO -->
                 <div class="mt-2 flex flex-col">
                     <label for="weight" class="font-sans font-bold text-teal-800 text-lg content-center">Peso:</label>
                     <input type="text" id="weight" name="weight" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->weight }}" required>
                 </div>
                 <!-- E-MAIL -->
                 <div class="mt-2 flex flex-col">
                     <label for="email" class="font-sans font-bold text-teal-800 text-lg content-center">Email:</label>
                     <input type="text" id="email" name="email" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->email }}" required>
                 </div>
                 <!-- SENHA -->
                 <div class="mt-2 flex flex-col">
                     <label for="password" class="font-sans font-bold text-teal-800 text-lg content-center">Senha:</label>
                     <input type="password" id="password" name="password" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->password }}" required>
                 </div>
 
                 <div class="">
@@ -80,7 +82,7 @@
                             font-medium text-md leading-tight rounded shadow-md 
                             hover:bg-teal-800 hover:shadow-lg focus:bg-teal-900 focus:shadow-lg 
                             focus:outline-none focus:ring-0 active:bg-teal-800 active:shadow-lg 
-                            transition duration-150 ease-in-out" value="Salvar">
+                            transition duration-150 ease-in-out" value="Atualizar">
                 </div>
         </form>
     </div>
