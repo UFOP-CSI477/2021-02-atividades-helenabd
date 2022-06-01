@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFoodRequest;
+use App\Http\Requests\UpdateFoodRequest;
 use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
@@ -36,7 +38,7 @@ class FoodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFoodRequest $request)
     {
         if (Food::create($request->all())) {
             session()->flash('message', 'Alimento adicionado com sucesso!');
@@ -76,7 +78,7 @@ class FoodController extends Controller
      * @param  \App\Models\Food  $food
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Food $food)
+    public function update(UpdateFoodRequest $request, Food $food)
     {
         $food->fill($request->all());
         if ($food->save()) {

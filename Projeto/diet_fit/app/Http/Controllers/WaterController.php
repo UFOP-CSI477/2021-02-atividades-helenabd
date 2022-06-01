@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreWaterRequest;
+use App\Http\Requests\UpdateWaterRequest;
 use App\Models\Water;
 use Illuminate\Http\Request;
 
@@ -33,7 +35,7 @@ class WaterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreWaterRequest $request)
     {
         if (Water::create($request->all())) {
             session()->flash('message', 'Água adicionada com sucesso!');
@@ -73,7 +75,7 @@ class WaterController extends Controller
      * @param  \App\Models\Water  $water
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Water $water)
+    public function update(UpdateWaterRequest $request, Water $water)
     {
         $water->fill($request->all());
         if ($water->save()) {
