@@ -92,6 +92,6 @@ class FoodController extends Controller
     {
         $food->delete();
         session()->flash('message', 'Alimentação excluída com sucesso!');
-        return redirect()->route('food.index');
+        return redirect()->route('progress');
     }
 }

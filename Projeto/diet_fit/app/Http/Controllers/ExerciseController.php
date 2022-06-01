@@ -90,6 +90,6 @@ class ExerciseController extends Controller
     {
         $exercise->delete();
         session()->flash('message', 'Exercício excluído com sucesso!');
-        return redirect()->route('exercise.index');
+        return redirect()->route('progress');
     }
 }

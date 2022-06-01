@@ -90,6 +90,6 @@ class WaterController extends Controller
     {
         $water->delete();
         session()->flash('message', 'Água removida com sucesso!');
-        return redirect()->route('water.index');
+        return redirect()->route('progress');
     }
 }
