@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Product;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +22,6 @@ Route::get('/', function () {
 
 Route::resource('/products', ProductController::class);
 
-// Route::get('/products', function () {
-//     $products = Product::all();
-//     return view('products', [
-//         'products' => $products
-//     ]);
-// });
+Route::resource('/states', StateController::class);
 
-// Route::get('/products/{id}', function ($id) {
-//     $products = Product::all();
-//     $product = $products->where('id', $id);
-//     return view('products', [
-//         'products' => $product
-//     ]);
-// });
+Route::resource('/cities', CityController::class);
