@@ -2,12 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\FoodController;
-use App\Http\Controllers\ExerciseController;
-use App\Http\Controllers\ProgressController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\WaterController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,9 +13,13 @@ use App\Http\Controllers\WaterController;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/dashboard', function () {
+    return view('home');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/login', function () {
     return view('login');
@@ -31,29 +29,24 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-Route::get('/principal', function () {
-    return view('principal');
-})->name('principal');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+    Route::get('/progress', function () {
+        return view('progress');
+    })->name('progress');
 
-Route::get('/progress', function () {
-    return view('progress');
-})->name('progress');
+    Route::get('/progress.show', [ProgressController::class, 'show'])->name('progress.show');
 
-Route::get('/progress.show', [ProgressController::class, 'show'])->name('progress.show');
+    Route::resource('/food', FoodController::class);
 
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+    Route::resource('/exercise', ExerciseController::class);
 
+    Route::resource('/water', WaterController::class);
 
-Route::resource('/food', FoodController::class);
+    Route::resource('/user', UserController::class);
+});
 
-Route::resource('/exercise', ExerciseController::class);
-
-Route::resource('/water', WaterController::class);
-
-Route::resource('/user', UserController::class);
+require __DIR__ . '/auth.php';
