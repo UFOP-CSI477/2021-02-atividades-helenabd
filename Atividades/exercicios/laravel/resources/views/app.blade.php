@@ -40,19 +40,19 @@
     </div>
 
     <!-- Mensagem -->
-    @if(session('mensagem'))
+    @if(session('success'))
     <div class="container">
         <div class="alert alert-success">
-            {{ session('mensagem') }}
+            {{ session('success') }}
         </div>
     </div>
     @endif
 
     <!-- Mensagem -->
-    @if(session('mensagem-erro'))
+    @if(session('error-message'))
     <div class="container">
         <div class="alert alert-danger">
-            {{ session('mensagem-erro') }}
+            {{ session('error-message') }}
         </div>
     </div>
     @endif
