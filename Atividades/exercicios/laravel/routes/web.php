@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\PeopleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StateController;
@@ -25,3 +26,5 @@ Route::resource('/products', ProductController::class);
 Route::resource('/states', StateController::class);
 
 Route::resource('/cities', CityController::class);
+
+Route::resource('/people', PeopleController::class);
