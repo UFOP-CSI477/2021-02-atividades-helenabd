@@ -22,6 +22,7 @@
             <td class="d-flex justify-content-around">
                 <a href="{{ route('people.show', $p->id) }}" class="btn btn-info">Exibir</a>
                 <a href="{{ route('people.edit', $p->id) }}" class="btn btn-warning">Editar</a>
+            </td>
         </tr>
         @endforeach
 </table>

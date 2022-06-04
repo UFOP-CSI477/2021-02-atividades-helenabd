@@ -15,4 +15,9 @@ class Person extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
 }

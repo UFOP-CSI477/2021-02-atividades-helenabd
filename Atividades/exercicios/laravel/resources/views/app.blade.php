@@ -33,6 +33,7 @@
                 <li><a href="{{ route('cities.index') }}" class="nav-link px-2 link-dark">Cidades</a></li>
                 <li><a href="{{ route('products.index') }}" class="nav-link px-2 link-dark">Produtos</a></li>
                 <li><a href="{{ route('people.index') }}" class="nav-link px-2 link-dark">Pessoas</a></li>
+                <li><a href="{{ route('purchases.index') }}" class="nav-link px-2 link-dark">Compras</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
