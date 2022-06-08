@@ -1,56 +1,64 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('welcome')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('content')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+<div class="h-full w-full py-12 px-4">
+    <div>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+        <!-- LOGO -->
+        <div class="pl-4 pt-4">
+            <span class="font-sans font-bold dark:text-teal text-7xl text-teal-900 text-bold">DIET</span>
+            <span class="font-sans font-bold dark:text-teal text-7xl text-teal-700 text-bold">FIT</span>
+        </div>
+    </div>
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+    <div class="flex flex-col items-center justify-center">
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+        <div class="bg-white shadow rounded-lg lg:w-1/3  md:w-1/3 p-10 mt-16">
+            <!-- TITLE -->
+            <div class="flex space-x-2 justify-center">
+                <p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-teal-800">Login</p>
             </div>
+            <form action="{{ route('login') }}" method="post">
+                @csrf
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                <!-- EMAIL -->
+                <div class="mt-6  w-full">
+                    <div class="relative flex items-center justify-center">
+                        <input name="email" id="email" aria-labelledby="email" type="email" placeholder="Email" class="text-md font-medium 
+                        leading-4 text-teal-700 bg-slate-200 
+                    rounded-lg border border-teal-700/50 focus:outline-none px-4 py-3 mt-4 
+                    hover:border-teal-700" id="email">
+                    </div>
+                </div>
+                <!-- SENHA -->
+                <div class="mt-6  w-full">
+                    <div class="relative flex items-center justify-center">
+                        <input id="password" name="password" type="password" placeholder="Senha" class="text-md font-medium leading-4 
+                        text-teal-700 bg-slate-200 rounded-lg border border-teal-700/50 focus:outline-none 
+                        px-4 py-3 mt-4 hover:border-teal-700" />
+                    </div>
+                </div>
+                <!-- BOTÃO -->
+                <div class="mt-8 flex space-x-2 justify-center">
+                    <button role="button" class="inline-block w-2/3 px-6 py-2.5 bg-teal-700 text-white 
+                        font-medium text-md leading-tight rounded shadow-md 
+                        hover:bg-teal-800 hover:shadow-lg focus:bg-teal-900 focus:shadow-lg 
+                        focus:outline-none focus:ring-0 active:bg-teal-800 active:shadow-lg 
+                        transition duration-150 ease-in-out">Entrar</button>
+                </div>
+            </form>
+            <!-- Cadastre-se -->
+            <div class="flex space-x-2 justify-center">
+                <p tabindex="0" class="focus:outline-none text-md mt-4 font-medium leading-none text-gray-700">Ainda
+                    não
+                    é cadastrado? <a href="{{ route('register') }}" class="hover:text-teal-900 focus:text-teal-900 
+                        focus:outline-none text-md font-bold 
+                        leading-none text-teal-800 cursor-pointer">
+                        Cadastre-se</a></p>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+@endsection

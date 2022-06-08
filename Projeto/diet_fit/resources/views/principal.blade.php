@@ -16,7 +16,7 @@
     <!-- TODO: descobrir como colocar bold na tela que está no navbar -->
     <div class="container-fluid">
         <!-- NAV_BAR -->
-        <div class="bg-teal-700/70 py-8">
+        <div class="bg-teal-700/70 py-6">
             <div class="container mx-auto flex items-center justify-between">
                 <div>
                     <span class="font-sans font-bold dark:text-teal text-2xl text-teal-900 text-bold">DIET</span>
@@ -33,6 +33,15 @@
                         <a href="{{route('user.index')}}" class="dark:text-white text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-800 hover:underline">PERFIL</a>
                     </li>
                 </ul>
+
+                <div>
+                    <!-- {{ Auth::user()->name }} -->
+                    <!-- Logout -->
+                    <form action=" {{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="bg-transparent hover:bg-white-500 text-white font-semibold hover:text-white py-2 px-4 border border-white-500 hover:border-transparent rounded">Logout</button>
+                    </form>
+                </div>
             </div>
         </div>
 
