@@ -22,20 +22,20 @@
                 <div class="mt-2 flex flex-col">
                     <label for="name" class="font-sans font-bold text-teal-800 text-lg content-center">Nome:</label>
                     <input type="text" id="name" name="name" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700">
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('name') }}">
                 </div>
                 <!-- DATA_NASCIMENTO -->
                 <div class="mt-2 flex flex-col">
                     <label for="birthday" class="font-sans font-bold text-teal-800 text-lg content-center">Data de
                         Nascimento:</label>
                     <input type="text" id="birthday" name="birthday" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700">
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('birthday') }}">
                 </div>
                 <!-- TELEFONE -->
                 <div class="mt-2 flex flex-col">
                     <label for="phone_number" class="font-sans font-bold text-teal-800 text-lg content-center">Telefone:</label>
                     <input type="text" id="phone_number" name="phone_number" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700">
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('phone_number') }}">
                 </div>
                 <!-- GÊNERO -->
                 <div class="mt-2 flex flex-col">
@@ -54,19 +54,19 @@
                 <div class="mt-2 flex flex-col">
                     <label for="height" class="font-sans font-bold text-teal-800 text-lg content-center">Altura:</label>
                     <input type="text" id="height" name="height" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700">
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('height') }}">
                 </div>
                 <!-- PESO -->
                 <div class="mt-2 flex flex-col">
                     <label for="weight" class="font-sans font-bold text-teal-800 text-lg content-center">Peso:</label>
                     <input type="text" id="weight" name="weight" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700">
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('weight') }}">
                 </div>
                 <!-- E-MAIL -->
                 <div class="mt-2 flex flex-col">
                     <label for="email" class="font-sans font-bold text-teal-800 text-lg content-center">Email:</label>
                     <input type="text" id="email" name="email" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700">
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('email') }}">
                 </div>
                 <!-- SENHA -->
                 <div class="mt-2 flex flex-col">
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="">
-                    <input type="submit" class="inline-block w-1/3 px-6 py-2.5 bg-teal-700 text-white 
+                    <input type="submit" class="w-1/3 px-6 py-2.5 bg-teal-700 text-white 
                             font-medium text-md leading-tight rounded shadow-md 
                             hover:bg-teal-800 hover:shadow-lg focus:bg-teal-900 focus:shadow-lg 
                             focus:outline-none focus:ring-0 active:bg-teal-800 active:shadow-lg 
