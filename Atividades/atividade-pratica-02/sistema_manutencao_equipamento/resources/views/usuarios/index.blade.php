@@ -2,6 +2,10 @@
 
 @section('conteudo')
 
+<div class="container mb-4">
+    <h2>Lista de usuários</h2>
+</div>
+
 <table class="table table-striped table-hover">
     <thead class="table-dark">
         <tr>

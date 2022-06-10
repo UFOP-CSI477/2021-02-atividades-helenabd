@@ -22,7 +22,7 @@
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{{ route('administrativo') }}" class="nav-link px-2 link-secondary">Home</a></li>
                 <li><a href="{{ route('usuarios.index') }}" class="nav-link px-2 link-dark">Usuários</a></li>
-                <li><a href="" class="nav-link px-2 link-dark">Equipamentos</a></li>
+                <li><a href="{{ route('equipamentos.index') }}" class="nav-link px-2 link-dark">Equipamentos</a></li>
                 <li><a href="" class="nav-link px-2 link-dark">Manutenções</a></li>
             </ul>
 
@@ -37,6 +37,37 @@
 
             </div>
         </header>
+    </div>
+
+    <!-- Mensagem -->
+    @if(session('success'))
+    <div class="container">
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    </div>
+    @endif
+
+    <!-- Mensagem -->
+    @if(session('error-message'))
+    <div class="container">
+        <div class="alert alert-danger">
+            {{ session('error-message') }}
+        </div>
+    </div>
+    @endif
+
+    <!-- Erros -->
+    <div class="container">
+        @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
     </div>
 
     <!-- CONTEUDO DA PAGINA -->

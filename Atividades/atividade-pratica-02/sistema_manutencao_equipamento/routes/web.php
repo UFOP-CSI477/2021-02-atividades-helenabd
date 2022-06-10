@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EquipamentoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/administrativo', function () {
         return view('administrativo');
     })->name('administrativo');
-
-    Route::resource('/usuarios', UserController::class);
 });
+Route::resource('/usuarios', UserController::class);
+
+Route::resource('/equipamentos', EquipamentoController::class);
 
 require __DIR__ . '/auth.php';
