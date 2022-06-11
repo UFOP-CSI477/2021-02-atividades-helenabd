@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -25,18 +27,23 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        if (Product::create($request->all())) {
+            return redirect()->route('products.index')->with('success', 'Produto cadastrado com sucesso!');
+        } else {
+            session()->flash('error-message', 'Erro ao cadastrar produto!');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -47,7 +54,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', ['product' => $product]);
     }
 
     /**
@@ -58,19 +65,25 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UpdateProductRequest  $request
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $product->fill($request->all());
+        if ($product->save()) {
+            return redirect()->route('products.index')->with('success', 'Produto alterado com sucesso!');
+        } else {
+            session()->flash('error-message', 'Erro ao alterar produto!');
+            return back()->withInput();
+        }
     }
 
     /**
@@ -81,6 +94,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        if ($product->delete()) {
+            return redirect()->route('products.index')->with('success', 'Produto excluído com sucesso!');
+        } else {
+            session()->flash('error-message', 'Erro ao excluir produto!');
+            return back()->withInput();
+        }
     }
 }

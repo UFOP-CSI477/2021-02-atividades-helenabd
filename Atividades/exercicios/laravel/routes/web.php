@@ -1,8 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Models\Product;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PurchasesController;
+use App\Http\Controllers\StateController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,22 +19,29 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('principal');
-})->name('principal');
+    return view('home');
+})->name('home');
 
-Route::resource('/products', ProductController::class);
+Route::get('/dashboard', function () {
+    return view('home');
+})->middleware(['auth'])->name('dashboard');
 
-// Route::get('/products', function () {
-//     $products = Product::all();
-//     return view('products', [
-//         'products' => $products
-//     ]);
-// });
+Route::middleware('auth')->group(function () {
+    Route::resource('/products', ProductController::class);
 
-// Route::get('/products/{id}', function ($id) {
-//     $products = Product::all();
-//     $product = $products->where('id', $id);
-//     return view('products', [
-//         'products' => $product
-//     ]);
-// });
+    Route::resource('/states', StateController::class);
+
+    Route::resource('/cities', CityController::class);
+
+    Route::resource('/people', PeopleController::class);
+
+    Route::resource('/purchases', PurchasesController::class);
+
+    Route::get('/purchases.date', [PurchasesController::class, 'dateShow'])->name('purchases.date');
+
+    Route::get('/purchases.products', [PurchasesController::class, 'productsShow'])->name('purchases.products');
+
+    Route::get('/purchases.people', [PurchasesController::class, 'peopleShow'])->name('purchases.people');
+});
+
+require __DIR__ . '/auth.php';
