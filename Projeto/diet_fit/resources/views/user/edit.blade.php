@@ -24,20 +24,20 @@
                 <div class="mt-2 flex flex-col">
                     <label for="name" class="font-sans font-bold text-teal-800 text-lg content-center">Nome:</label>
                     <input type="text" id="name" name="name" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->name }}" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('user', $user->name) }}">
                 </div>
                 <!-- DATA_NASCIMENTO -->
                 <div class="mt-2 flex flex-col">
                     <label for="birthday" class="font-sans font-bold text-teal-800 text-lg content-center">Data de
                         Nascimento:</label>
                     <input type="text" id="birthday" name="birthday" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->birthday }}" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('user', $user->birthday) }}">
                 </div>
                 <!-- TELEFONE -->
                 <div class="mt-2 flex flex-col">
                     <label for="phone_number" class="font-sans font-bold text-teal-800 text-lg content-center">Telefone:</label>
                     <input type="text" id="phone_number" name="phone_number" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->phone_number }}" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('user', $user->phone_number) }}">
                 </div>
                 <!-- GÊNERO -->
                 <div class="mt-2 flex flex-col">
@@ -56,25 +56,25 @@
                 <div class="mt-2 flex flex-col">
                     <label for="height" class="font-sans font-bold text-teal-800 text-lg content-center">Altura:</label>
                     <input type="text" id="height" name="height" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->height }}" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('user', $user->height) }}">
                 </div>
                 <!-- PESO -->
                 <div class="mt-2 flex flex-col">
                     <label for="weight" class="font-sans font-bold text-teal-800 text-lg content-center">Peso:</label>
                     <input type="text" id="weight" name="weight" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->weight }}" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('user', $user->weight) }}">
                 </div>
                 <!-- E-MAIL -->
                 <div class="mt-2 flex flex-col">
                     <label for="email" class="font-sans font-bold text-teal-800 text-lg content-center">Email:</label>
                     <input type="text" id="email" name="email" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->email }}" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ old('user', $user->email) }}">
                 </div>
                 <!-- SENHA -->
                 <div class="mt-2 flex flex-col">
-                    <label for="password" class="font-sans font-bold text-teal-800 text-lg content-center">Senha:</label>
+                    <!-- <label for="password" class="font-sans font-bold text-teal-800 text-lg content-center">Senha:</label>
                     <input type="password" id="password" name="password" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
-                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->password }}" required>
+                            rounded-lg border border-teal-700/50 focus:outline-none px-4 py-2 mt-3 hover:border-teal-700" value="{{ $user->password }}"> -->
                 </div>
 
                 <div class="">

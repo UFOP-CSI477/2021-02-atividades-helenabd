@@ -31,7 +31,6 @@ class UpdateUserRequest extends FormRequest
             'height' => 'required',
             'weight' => 'required',
             'email' => 'required',
-            'password' => 'required',
         ];
     }
 
@@ -45,7 +44,6 @@ class UpdateUserRequest extends FormRequest
             'height.required' => 'O campo altura é obrigatório',
             'weight.required' => 'O campo peso é obrigatório',
             'email.required' => 'O campo email é obrigatório',
-            'password.required' => 'O campo senha é obrigatório',
         ];
     }
 }

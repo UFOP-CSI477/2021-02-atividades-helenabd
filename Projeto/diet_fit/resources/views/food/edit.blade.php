@@ -40,7 +40,7 @@
                     <label for="calories" class="font-sans font-bold text-teal-800/70 text-lg content-center">Calorias(kcal):</label>
                     <input id="calories" name="calories" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
                                             rounded-lg border border-teal-700/50 focus:outline-none px-4 py-3 mt-4 
-                                            hover:border-teal-700" value="{{ $food->calories }}" />
+                                            hover:border-teal-700" value="{{ old('calories', $food->calories) }}" />
                 </div>
                 <!-- Button -->
                 <br><br>
@@ -54,7 +54,7 @@
                     font-medium text-md leading-tight rounded shadow-md 
                     hover:bg-teal-800 hover:shadow-lg focus:bg-teal-900 focus:shadow-lg 
                     focus:outline-none focus:ring-0 active:bg-teal-800 active:shadow-lg 
-                    transition duration-150 ease-in-out" href="{{ route('food.index') }}">Voltar</a>
+                    transition duration-150 ease-in-out" href="{{ route('progress') }}">Voltar</a>
                 </div>
             </form>
         </div>

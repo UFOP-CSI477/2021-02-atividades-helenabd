@@ -19,31 +19,35 @@
             <div class="flex space-x-2 justify-center">
                 <p tabindex="0" class="focus:outline-none text-2xl font-extrabold leading-6 text-teal-800">Login</p>
             </div>
-            <!-- EMAIL -->
-            <div class="mt-6  w-full">
-                <div class="relative flex items-center justify-center">
-                    <input name="email" id="email" aria-labelledby="email" type="email" placeholder="Email" class="text-md font-medium 
+            <form action="{{ route('login') }}" method="post">
+                @csrf
+
+                <!-- EMAIL -->
+                <div class="mt-6  w-full">
+                    <div class="relative flex items-center justify-center">
+                        <input name="email" id="email" aria-labelledby="email" type="email" placeholder="Email" class="text-md font-medium 
                         leading-4 text-teal-700 bg-slate-200 
                     rounded-lg border border-teal-700/50 focus:outline-none px-4 py-3 mt-4 
                     hover:border-teal-700" id="email">
+                    </div>
                 </div>
-            </div>
-            <!-- SENHA -->
-            <div class="mt-6  w-full">
-                <div class="relative flex items-center justify-center">
-                    <input id="pass" name="pass" type="password" placeholder="Senha" class="text-md font-medium leading-4 
+                <!-- SENHA -->
+                <div class="mt-6  w-full">
+                    <div class="relative flex items-center justify-center">
+                        <input id="password" name="password" type="password" placeholder="Senha" class="text-md font-medium leading-4 
                         text-teal-700 bg-slate-200 rounded-lg border border-teal-700/50 focus:outline-none 
                         px-4 py-3 mt-4 hover:border-teal-700" />
+                    </div>
                 </div>
-            </div>
-            <!-- BOTÃO -->
-            <div class="mt-8 flex space-x-2 justify-center">
-                <button role="button" class="inline-block w-2/3 px-6 py-2.5 bg-teal-700 text-white 
+                <!-- BOTÃO -->
+                <div class="mt-8 flex space-x-2 justify-center">
+                    <button role="button" class="inline-block w-2/3 px-6 py-2.5 bg-teal-700 text-white 
                         font-medium text-md leading-tight rounded shadow-md 
                         hover:bg-teal-800 hover:shadow-lg focus:bg-teal-900 focus:shadow-lg 
                         focus:outline-none focus:ring-0 active:bg-teal-800 active:shadow-lg 
                         transition duration-150 ease-in-out">Entrar</button>
-            </div>
+                </div>
+            </form>
             <!-- Cadastre-se -->
             <div class="flex space-x-2 justify-center">
                 <p tabindex="0" class="focus:outline-none text-md mt-4 font-medium leading-none text-gray-700">Ainda

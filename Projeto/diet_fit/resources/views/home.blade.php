@@ -1,7 +1,7 @@
 @extends('principal')
 
 @section('content')
-<div class="w-full py-12">
+<div class="w-full py-8">
     <div class="container mx-auto flex items-start justify-center">
         <div class="w-full">
             <dh-component>
@@ -43,7 +43,7 @@
                                         <label for="calories" class="font-sans font-bold text-teal-800/70 text-lg content-center">Calorias(kcal):</label>
                                         <input id="calories" name="calories" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
                                             rounded-lg border border-teal-700/50 focus:outline-none px-4 py-3 mt-4 
-                                            hover:border-teal-700" />
+                                            hover:border-teal-700" value="{{ old('calories') }}" />
                                     </div>
                                     <!-- Button -->
                                     <div class="flex space-x-2 justify-center mt-10">
@@ -97,7 +97,7 @@
                                         <label for="calories" class="font-sans font-bold text-teal-800/70 text-lg content-center">Calorias(kcal):</label>
                                         <input id="calories" name="calories" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 
                                             rounded-lg border border-teal-700/50 focus:outline-none px-4 py-3 mt-4 
-                                            hover:border-teal-700" />
+                                            hover:border-teal-700" value="{{ old('calories') }}" />
                                     </div>
                                     <!-- Button -->
                                     <div class="flex space-x-2 justify-center mt-10">
@@ -129,7 +129,9 @@
                                     <!-- Quantity -->
                                     <div id="exercise_calorie" class="py-8 my-8 space-y-5 flex flex-col">
                                         <label for="amount" class="font-sans font-bold text-teal-800/70 text-lg content-center">Quantidade(mL):</label>
-                                        <input type="text" name="amount" id="amount" class="text-md font-medium leading-4 text-teal-700 bg-slate-200 rounded-lg border border-teal-700/50 focus:outline-none px-4 py-3 mt-4 hover:border-teal-700" />
+                                        <input type="text" name="amount" id="amount" class="text-md font-medium 
+                                        leading-4 text-teal-700 bg-slate-200 rounded-lg border border-teal-700/50 
+                                        focus:outline-none px-4 py-3 mt-4 hover:border-teal-700" value="{{ old('amount') }}" />
                                     </div>
                                     <!-- Button -->
                                     <br><br>
