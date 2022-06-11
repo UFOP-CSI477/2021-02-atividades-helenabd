@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipamentoController;
+use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('/usuarios', UserController::class);
 
 Route::resource('/equipamentos', EquipamentoController::class);
+
+Route::resource('/registros', RegistroController::class);
 
 require __DIR__ . '/auth.php';

@@ -93,7 +93,10 @@ class EquipamentoController extends Controller
      */
     public function destroy(Equipamento $equipamento)
     {
-        if ($equipamento->delete()) {
+        if ($equipamento->registros->count() > 0) {
+            session()->flash('error-message', 'Não é possível excluir equipamento com registros!');
+            return back()->withInput();
+        } else if ($equipamento->delete()) {
             session()->flash('success', 'Equipamento excluído com sucesso!');
             return redirect()->route('equipamentos.index');
         } else {

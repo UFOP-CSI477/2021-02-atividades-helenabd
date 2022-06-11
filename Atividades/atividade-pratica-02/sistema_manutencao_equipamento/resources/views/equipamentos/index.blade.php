@@ -19,23 +19,16 @@
         <tr>
             <th scope="row">{{$equipamento->id}}</th>
             <td><a href="{{ route('equipamentos.show', $equipamento->id) }}">{{$equipamento->nome}}</a></td>
-            <td>
+            <td class="d-flex">
                 <a href="{{ route('equipamentos.edit', $equipamento->id) }}" class="btn btn-warning">Editar</a>
-                <a href="#" class="btn btn-danger" onclick="confirmaExclusao()">Excluir</a>
+                <span class="px-2"></span>
+                <form name="exclusao" action="{{ route('equipamentos.destroy', $equipamento->id) }}" method="post" onsubmit="return confirm('Deseja realmente excluir este equipamento?');">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="Excluir" class="btn btn-danger">
+                </form>
             </td>
         </tr>
-        <form name="exclusao" action="{{ route('equipamentos.destroy', $equipamento->id) }}" method="post">
-            @csrf
-            @method('DELETE')
-        </form>
-
-        <script>
-            function confirmaExclusao() {
-                if (confirm('Deseja realmente excluir este equipamento?')) {
-                    document.exclusao.submit();
-                }
-            }
-        </script>
 
         @endforeach
     </tbody>

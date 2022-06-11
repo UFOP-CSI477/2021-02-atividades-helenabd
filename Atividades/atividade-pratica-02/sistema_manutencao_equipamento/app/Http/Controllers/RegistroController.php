@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRegistroRequest;
 use App\Http\Requests\UpdateRegistroRequest;
+use App\Models\Equipamento;
 use App\Models\Registro;
+use App\Models\User;
 
 class RegistroController extends Controller
 {
@@ -15,7 +17,8 @@ class RegistroController extends Controller
      */
     public function index()
     {
-        //
+        $registros = Registro::all();
+        return view('registros.index', ['registros' => $registros]);
     }
 
     /**
@@ -25,7 +28,9 @@ class RegistroController extends Controller
      */
     public function create()
     {
-        //
+        $equipamentos = Equipamento::orderBy('nome')->get();
+        $usuarios = User::orderBy('nome')->get();
+        return view('registros.create', ['equipamentos' => $equipamentos, 'usuarios' => $usuarios]);
     }
 
     /**
@@ -36,7 +41,11 @@ class RegistroController extends Controller
      */
     public function store(StoreRegistroRequest $request)
     {
-        //
+        if (Registro::create($request->all())) {
+            return redirect()->route('registros.index')->with('success', 'Registro cadastrado com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao cadastrar registro!');
+        }
     }
 
     /**
@@ -47,7 +56,7 @@ class RegistroController extends Controller
      */
     public function show(Registro $registro)
     {
-        //
+        return view('registros.show', ['registro' => $registro]);
     }
 
     /**
@@ -58,7 +67,9 @@ class RegistroController extends Controller
      */
     public function edit(Registro $registro)
     {
-        //
+        $equipamentos = Equipamento::orderBy('nome')->get();
+        $usuarios = User::orderBy('nome')->get();
+        return view('registros.edit', ['registro' => $registro, 'equipamentos' => $equipamentos, 'usuarios' => $usuarios]);
     }
 
     /**
@@ -70,7 +81,12 @@ class RegistroController extends Controller
      */
     public function update(UpdateRegistroRequest $request, Registro $registro)
     {
-        //
+        $registro->fill($request->all());
+        if ($registro->save()) {
+            return redirect()->route('registros.index')->with('success', 'Registro atualizado com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao atualizar registro!');
+        }
     }
 
     /**
@@ -81,6 +97,10 @@ class RegistroController extends Controller
      */
     public function destroy(Registro $registro)
     {
-        //
+        if ($registro->delete()) {
+            return redirect()->route('registros.index')->with('success', 'Registro excluído com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao excluir registro!');
+        }
     }
 }

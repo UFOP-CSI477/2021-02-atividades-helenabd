@@ -23,7 +23,7 @@
                 <li><a href="{{ route('administrativo') }}" class="nav-link px-2 link-secondary">Home</a></li>
                 <li><a href="{{ route('usuarios.index') }}" class="nav-link px-2 link-dark">Usuários</a></li>
                 <li><a href="{{ route('equipamentos.index') }}" class="nav-link px-2 link-dark">Equipamentos</a></li>
-                <li><a href="" class="nav-link px-2 link-dark">Manutenções</a></li>
+                <li><a href="{{ route('registros.index') }}" class="nav-link px-2 link-dark">Manutenções</a></li>
             </ul>
 
             <div class="col-md-3 text-end">
