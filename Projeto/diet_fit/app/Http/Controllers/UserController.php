@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,7 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::orderBy('name', 'desc')->first();
+        $id = Auth::id();
+        // var_dump($id);
+        $user = User::where('id', $id)->first();
         // var_dump($user);
         return view('profile', ['user' => $user]);
     }
