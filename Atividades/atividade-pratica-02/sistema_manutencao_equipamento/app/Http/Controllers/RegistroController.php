@@ -103,4 +103,10 @@ class RegistroController extends Controller
             return back()->withInput()->with('error-message', 'Erro ao excluir registro!');
         }
     }
+
+    public function indexByDate()
+    {
+        $registros = Registro::orderBy('datalimite', 'asc')->get();
+        return view('registros.indexByDate', ['registros' => $registros]);
+    }
 }

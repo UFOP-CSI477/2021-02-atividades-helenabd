@@ -35,4 +35,12 @@ Route::resource('/equipamentos', EquipamentoController::class);
 
 Route::resource('/registros', RegistroController::class);
 
+Route::get('/servicos', function () {
+    return view('servicos');
+})->name('servicos');
+
+Route::get('/equipamentos.indexByName', [EquipamentoController::class, 'indexByName'])->name('equipamentos.indexByName');
+
+Route::get('/registros.indexByDate', [RegistroController::class, 'indexByDate'])->name('registros.indexByDate');
+
 require __DIR__ . '/auth.php';

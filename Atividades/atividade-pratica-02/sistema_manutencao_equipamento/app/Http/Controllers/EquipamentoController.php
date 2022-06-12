@@ -104,4 +104,10 @@ class EquipamentoController extends Controller
             return back()->withInput();
         }
     }
+
+    public function indexByName()
+    {
+        $equipamentos = Equipamento::orderBy('nome')->get();
+        return view('equipamentos.indexByName', ['equipamentos' => $equipamentos]);
+    }
 }
