@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateRegistroRequest;
 use App\Models\Equipamento;
 use App\Models\Registro;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class RegistroController extends Controller
 {
@@ -108,5 +109,19 @@ class RegistroController extends Controller
     {
         $registros = Registro::orderBy('datalimite', 'asc')->get();
         return view('registros.indexByDate', ['registros' => $registros]);
+    }
+
+    public function groupByEquipamento()
+    {
+        $equipamentos = Equipamento::orderBy('nome')->get();
+        return view('registros.groupByEquipamento', ['equipamentos' => $equipamentos]);
+    }
+
+    public function showByEquipamento(Request $request)
+    {
+        $equip = $request->all();
+        $equipamento = $equip['equipamento_id'];
+        $registros = Registro::where('equipamento_id', $equipamento)->get();
+        return view('registros.showByEquipamento', ['registros' => $registros]);
     }
 }

@@ -43,4 +43,8 @@ Route::get('/equipamentos.indexByName', [EquipamentoController::class, 'indexByN
 
 Route::get('/registros.indexByDate', [RegistroController::class, 'indexByDate'])->name('registros.indexByDate');
 
+Route::get('/registros.groupByEquipamento', [RegistroController::class, 'groupByEquipamento'])->name('registros.groupByEquipamento');
+
+Route::get('/registros.showByEquipamento', [RegistroController::class, 'showByEquipamento'])->name('registros.showByEquipamento');
+
 require __DIR__ . '/auth.php';

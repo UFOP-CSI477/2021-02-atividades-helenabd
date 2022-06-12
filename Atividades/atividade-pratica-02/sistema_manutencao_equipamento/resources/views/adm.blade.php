@@ -19,15 +19,16 @@
                 <i class="bi bi-wrench-adjustable-circle-fill" style="font-size: 3rem;"></i>
             </a>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <ul class="nav col-8 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{{ route('welcome') }}" class="nav-link px-2 link-secondary">Home</a></li>
                 <li><a href="{{ route('administrativo') }}" class="nav-link px-2 link-dark">Área Administrativa</a></li>
                 <li><a href="{{ route('usuarios.index') }}" class="nav-link px-2 link-dark">Usuários</a></li>
                 <li><a href="{{ route('equipamentos.index') }}" class="nav-link px-2 link-dark">Equipamentos</a></li>
                 <li><a href="{{ route('registros.index') }}" class="nav-link px-2 link-dark">Manutenções</a></li>
+                <li><a href="{{ route('registros.groupByEquipamento') }}" class="nav-link px-2 link-dark">Relatório</a></li>
             </ul>
 
-            <div class="col-md-3 text-end">
+            <div class="col-md-2 text-end">
 
                 {{ Auth::user()->name }}
                 <!-- Logout -->
