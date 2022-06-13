@@ -122,6 +122,7 @@ class RegistroController extends Controller
         $equip = $request->all();
         $equipamento = $equip['equipamento_id'];
         $registros = Registro::where('equipamento_id', $equipamento)->get();
-        return view('registros.showByEquipamento', ['registros' => $registros]);
+        $quantidade = $registros->count();
+        return view('registros.showByEquipamento', ['registros' => $registros, 'quantidade' => $quantidade]);
     }
 }

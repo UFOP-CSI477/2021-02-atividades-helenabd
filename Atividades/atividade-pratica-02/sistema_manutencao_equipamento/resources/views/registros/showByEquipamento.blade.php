@@ -6,6 +6,10 @@
     <h2>Relatório de manutenções</h2>
 </div>
 
+<div class="my-4">
+    <h5>Quantidade de registros: {{$quantidade}}</h5>
+</div>
+
 <table class="table table-striped table-hover">
     <thead class="table-dark">
         <tr>
