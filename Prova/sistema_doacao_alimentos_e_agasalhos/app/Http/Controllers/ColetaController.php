@@ -103,4 +103,50 @@ class ColetaController extends Controller
             return back()->withInput()->with('error-message', 'Erro ao excluir coleta!');
         }
     }
+
+    public function coletasPorEntidade()
+    {
+        $totalColetado = array();
+        $quantidade = 0;
+        $entidades = Entidade::orderBy('nome')->get();
+        foreach ($entidades as $entidade) {
+            $coletas = Coleta::where('entidade_id', $entidade->id)->get();
+            foreach ($coletas as $coleta) {
+                $quantidade += $coleta->quantidade;
+            }
+            array_push($totalColetado, $quantidade);
+            $quantidade = 0;
+        }
+
+        $geral = 0;
+
+        foreach ($totalColetado as $total) {
+            $geral += $total;
+        }
+
+        return view('coletas.coletasPorEntidade', ['entidades' => $entidades, 'totalColetado' => $totalColetado, 'geral' => $geral]);
+    }
+
+    public function coletasPorItem()
+    {
+        $totalColetado = array();
+        $quantidade = 0;
+        $items = Item::orderBy('descricao')->get();
+        foreach ($items as $item) {
+            $coletas = Coleta::where('item_id', $item->id)->get();
+            foreach ($coletas as $coleta) {
+                $quantidade += $coleta->quantidade;
+            }
+            array_push($totalColetado, $quantidade);
+            $quantidade = 0;
+        }
+
+        $geral = 0;
+
+        foreach ($totalColetado as $total) {
+            $geral += $total;
+        }
+
+        return view('coletas.coletasPorItem', ['items' => $items, 'totalColetado' => $totalColetado, 'geral' => $geral]);
+    }
 }

@@ -40,4 +40,8 @@ Route::resource('/entidades', EntidadeController::class);
 
 Route::resource('/coletas', ColetaController::class);
 
+Route::get('/coletas.coletasPorEntidade', [ColetaController::class, 'coletasPorEntidade'])->name('coletas.coletasPorEntidade');
+
+Route::get('/coletas.coletasPorItem', [ColetaController::class, 'coletasPorItem'])->name('coletas.coletasPorItem');
+
 require __DIR__ . '/auth.php';
