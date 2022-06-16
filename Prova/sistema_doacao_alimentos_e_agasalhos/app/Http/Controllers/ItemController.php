@@ -15,7 +15,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        $items = Item::orderBy('descricao')->get();
+        return view('items.index', ['items' => $items]);
     }
 
     /**
@@ -25,7 +26,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.create');
     }
 
     /**
@@ -36,7 +37,11 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+        if (Item::create($request->all())) {
+            return redirect()->route('items.index')->with('success', 'Item cadastrado com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao cadastrar item!');
+        }
     }
 
     /**
@@ -47,7 +52,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return view('items.show', ['item' => $item]);
     }
 
     /**
@@ -58,7 +63,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('items.edit', ['item' => $item]);
     }
 
     /**
@@ -70,7 +75,12 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        //
+        $item->fill($request->all());
+        if ($item->save()) {
+            return redirect()->route('items.index')->with('success', 'Item atualizado com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao atualizar item!');
+        }
     }
 
     /**
@@ -81,6 +91,10 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        if ($item->delete()) {
+            return redirect()->route('items.index')->with('success', 'Item excluído com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao excluir item!');
+        }
     }
 }

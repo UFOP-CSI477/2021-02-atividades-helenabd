@@ -13,7 +13,7 @@ class UpdateItemRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class UpdateItemRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'descricao' => 'required|max:100',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'descricao.required' => 'O campo descrição é obrigatório',
+            'descricao.max' => 'O campo descrição deve ter no máximo 100 caracteres',
         ];
     }
 }
