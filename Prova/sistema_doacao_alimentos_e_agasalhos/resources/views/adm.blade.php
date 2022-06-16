@@ -19,44 +19,61 @@
                 <i class="bi bi-box2-heart" style="font-size: 3rem;"></i>
             </a>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <ul class="nav col-8 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{{ route('welcome') }}" class="nav-link px-2 link-secondary">Home</a></li>
                 <li><a href="{{ route('administrativo') }}" class="nav-link px-2 link-success">Área Administrativa</a></li>
-                <li><a href="{{ route('geral') }}" class="nav-link px-2 link-success">Área Geral</a></li>
+                <li><a href="{{ route('items.index') }}" class="nav-link px-2 link-success">Itens</a></li>
+                <li><a href="{{ route('entidades.index') }}" class="nav-link px-2 link-success">Entidades</a></li>
+                <li><a href="{{ route('coletas.index') }}" class="nav-link px-2 link-success">Coletas</a></li>
             </ul>
 
-            <div class="col-md-3 text-end">
-                @if (Auth::check())
-                <!-- Logged -->
+            <div class="col-md-2 text-end">
+
                 {{ Auth::user()->name }}
                 <!-- Logout -->
                 <form action=" {{ route('logout') }}" method="post">
                     @csrf
                     <button type="submit" class="btn btn-outline-success">Logout</button>
                 </form>
-                @else
-                <!-- Login -->
-                <a href="{{ route('login') }}" class="btn btn-outline-success me-2">Login</a>
-                <a href=" {{ route('register') }}" class="btn btn-success">Sign-up</a>
-                @endif
+
             </div>
         </header>
     </div>
 
+    <!-- Mensagem -->
+    @if(session('success'))
+    <div class="container">
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    </div>
+    @endif
+
+    <!-- Mensagem -->
+    @if(session('error-message'))
+    <div class="container">
+        <div class="alert alert-danger">
+            {{ session('error-message') }}
+        </div>
+    </div>
+    @endif
+
+    <!-- Erros -->
+    <div class="container">
+        @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    </div>
+
     <!-- CONTEUDO DA PAGINA -->
     <div id="content" class="container">
-        <h1>Olá, mundo!</h1>
-
-        <h2>Você está no {{ env('APP_NAME') }}</h2>
-
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Nostrum est iste animi molestias commodi odio facilis eius ipsam saepe cupiditate,
-            earum iure dolore quis quasi ea vitae aperiam sequi illo.</p>
-
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Nostrum est iste animi molestias commodi odio facilis eius ipsam saepe cupiditate,
-            earum iure dolore quis quasi ea vitae aperiam sequi illo.</p>
-
+        @yield('conteudo')
     </div>
 
     <!-- Rodape -->

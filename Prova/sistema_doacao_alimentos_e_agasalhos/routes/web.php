@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ColetaController;
+use App\Http\Controllers\EntidadeController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +18,26 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return view('welcome');
+})->middleware(['auth'])->name('welcome');
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::get('/administrativo', function () {
+        return view('administrativo');
+    })->name('administrativo');
+});
+
+Route::get('/geral', function () {
+    return view('geral');
+})->name('geral');
+
+Route::resource('/items', ItemController::class);
+
+Route::resource('/entidades', EntidadeController::class);
+
+Route::resource('/coletas', ColetaController::class);
+
+require __DIR__ . '/auth.php';
