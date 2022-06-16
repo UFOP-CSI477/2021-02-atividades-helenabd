@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Coleta;
 use App\Http\Requests\StoreColetaRequest;
 use App\Http\Requests\UpdateColetaRequest;
+use App\Models\Entidade;
+use App\Models\Item;
 
 class ColetaController extends Controller
 {
@@ -15,7 +17,8 @@ class ColetaController extends Controller
      */
     public function index()
     {
-        //
+        $coletas = Coleta::all();
+        return view('coletas.index', ['coletas' => $coletas]);
     }
 
     /**
@@ -25,7 +28,9 @@ class ColetaController extends Controller
      */
     public function create()
     {
-        //
+        $items = Item::orderBy('descricao')->get();
+        $entidades = Entidade::orderBy('nome')->get();
+        return view('coletas.create', ['items' => $items, 'entidades' => $entidades]);
     }
 
     /**
@@ -36,7 +41,11 @@ class ColetaController extends Controller
      */
     public function store(StoreColetaRequest $request)
     {
-        //
+        if (Coleta::create($request->all())) {
+            return redirect()->route('coletas.index')->with('success', 'Coleta cadastrada com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao cadastrar coleta!');
+        }
     }
 
     /**
@@ -47,7 +56,7 @@ class ColetaController extends Controller
      */
     public function show(Coleta $coleta)
     {
-        //
+        return view('coletas.show', ['coleta' => $coleta]);
     }
 
     /**
@@ -58,7 +67,9 @@ class ColetaController extends Controller
      */
     public function edit(Coleta $coleta)
     {
-        //
+        $items = Item::orderBy('descricao')->get();
+        $entidades = Entidade::orderBy('nome')->get();
+        return view('coletas.edit', ['coleta' => $coleta, 'items' => $items, 'entidades' => $entidades]);
     }
 
     /**
@@ -70,7 +81,12 @@ class ColetaController extends Controller
      */
     public function update(UpdateColetaRequest $request, Coleta $coleta)
     {
-        //
+        $coleta->fill($request->all());
+        if ($coleta->save()) {
+            return redirect()->route('coletas.index')->with('success', 'Coleta atualizada com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao atualizar coleta!');
+        }
     }
 
     /**
@@ -81,6 +97,10 @@ class ColetaController extends Controller
      */
     public function destroy(Coleta $coleta)
     {
-        //
+        if ($coleta->delete()) {
+            return redirect()->route('coletas.index')->with('success', 'Coleta excluída com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao excluir coleta!');
+        }
     }
 }
