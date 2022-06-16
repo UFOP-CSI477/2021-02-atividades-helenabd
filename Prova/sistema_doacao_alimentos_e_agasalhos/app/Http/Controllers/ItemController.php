@@ -91,7 +91,9 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        if ($item->delete()) {
+        if ($item->coletas->count() > 0) {
+            return back()->withInput()->with('error-message', 'Item não pode ser excluída pois possui coletas!');
+        } else if ($item->delete()) {
             return redirect()->route('items.index')->with('success', 'Item excluído com sucesso!');
         } else {
             return back()->withInput()->with('error-message', 'Erro ao excluir item!');

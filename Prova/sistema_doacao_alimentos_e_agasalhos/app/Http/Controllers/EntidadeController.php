@@ -15,7 +15,8 @@ class EntidadeController extends Controller
      */
     public function index()
     {
-        //
+        $entidades = Entidade::orderBy('nome')->get();
+        return view('entidades.index', ['entidades' => $entidades]);
     }
 
     /**
@@ -25,7 +26,7 @@ class EntidadeController extends Controller
      */
     public function create()
     {
-        //
+        return view('entidades.create');
     }
 
     /**
@@ -36,7 +37,11 @@ class EntidadeController extends Controller
      */
     public function store(StoreEntidadeRequest $request)
     {
-        //
+        if (Entidade::create($request->all())) {
+            return redirect()->route('entidades.index')->with('success', 'Entidade cadastrada com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao cadastrar entidade!');
+        }
     }
 
     /**
@@ -47,7 +52,7 @@ class EntidadeController extends Controller
      */
     public function show(Entidade $entidade)
     {
-        //
+        return view('entidades.show', ['entidade' => $entidade]);
     }
 
     /**
@@ -58,7 +63,7 @@ class EntidadeController extends Controller
      */
     public function edit(Entidade $entidade)
     {
-        //
+        return view('entidades.edit', ['entidade' => $entidade]);
     }
 
     /**
@@ -70,7 +75,12 @@ class EntidadeController extends Controller
      */
     public function update(UpdateEntidadeRequest $request, Entidade $entidade)
     {
-        //
+        $entidade->fill($request->all());
+        if ($entidade->save()) {
+            return redirect()->route('entidades.index')->with('success', 'Entidade atualizada com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao atualizar entidade!');
+        }
     }
 
     /**
@@ -81,6 +91,12 @@ class EntidadeController extends Controller
      */
     public function destroy(Entidade $entidade)
     {
-        //
+        if ($entidade->coletas->count() > 0) {
+            return back()->withInput()->with('error-message', 'Entidade não pode ser excluída pois possui coletas!');
+        } else if ($entidade->delete()) {
+            return redirect()->route('entidades.index')->with('success', 'Entidade excluída com sucesso!');
+        } else {
+            return back()->withInput()->with('error-message', 'Erro ao excluir entidade!');
+        }
     }
 }
